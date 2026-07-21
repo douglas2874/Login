@@ -2,6 +2,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-size: "Poppins";
+    font-weight: 400;
 }
 
 @font-face {
@@ -29,6 +31,75 @@ body{
     font-family: "Poppins";
 }
 
+form{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+input, button{
+    padding: 12px 20px;
+    border-radius: 10px;
+    border-style: none;
+    outline: none;
+    font-size: 12px;
+    width: 300px;
+    box-shadow: -1px 3px 5.400000095367432px rgba(0, 0, 0, 0.30);
+}
+
+form button{
+    background: linear-gradient(292deg, #FF9551 1%, #3C72CD 100%);
+    border: none;
+    color: #2A2623;
+}
+
+button{
+    background: rgba(255, 255, 255, 0.15);
+    margin-top: 8px;
+    font-weight: 700;
+    border: 1px black solid;
+    box-shadow: -1px 3px 5.400000095367432px rgba(0, 0, 0, 0.60);
+    padding: 14px;
+    transition: all .3s;
+}
+
+button:hover{
+    transform: translateY(-2px);
+}
+
+input{
+    background: #757996;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+input::placeholder{
+    color:  rgba(255, 255, 255, 0.3);
+    font-size: "Poppins";
+}
+
+h2{
+    font-size: 42px;
+    margin-bottom: 32px;
+    font-family: "GC";
+    text-align: center;
+    width: 400px;
+}
+
+.facaCadastro h2, .facaLogin h2{
+    color: rgb(0, 0, 0);
+    margin-bottom: 22px;
+}
+
+.facaCadastro p, .facaLogin p{
+    color: rgba(0, 0, 0, 0.6);
+    margin-bottom: 12px;
+}
+
+p{
+    width: 300px;
+    text-align: center;
+}
+
 .containerPai{
     width: 100%;
     height: 100vh;
@@ -48,6 +119,21 @@ body{
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
+}
+
+.card::after{
+    width: 100%;
+    height: 100vh;
+    content: "";
+    position: absolute;
+    background-image: url(img/background.webp);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    right: 0;
+    z-index: 0;
 }
 
 .cardDireita, .cardEsquerda{
@@ -57,6 +143,7 @@ body{
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
 }
 
 .facaCadastro, .formCadastro, .facaLogin, .formLogin{
@@ -66,30 +153,50 @@ body{
     align-items: center;
 }
 
-form{
-    display: flex;
-    flex-direction: column;
-    gap: 22px;
+.facaLogin, .facaCadastro{
+    position: absolute;
 }
 
-input, button{
-    padding: 12px 20px;
-    border-radius: 10px;
-    border-style: none;
-    outline: none;
+.logo{
+    z-index: 1;
+    position: absolute;
+    margin-bottom: auto;
+    bottom: 480px;
 }
 
-form button{
-    background: linear-gradient(292deg, #FF9551 1%, #3C72CD 100%);
-    font-weight: 700;
+.logo img{
+    width: 56px;
 }
 
-button{
-    background: rgba(255, 255, 255, 0.15)
+/* LOGIN ACTIVE */
+
+.card.loginActive .facaLogin{
+    opacity: 0;
+    pointer-events: none;
 }
 
-h2{
-    font-size: 56px;
-    margin-bottom: 32px;
-    font-family: "GC";
+.card.loginActive .formCadastro{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card.loginActive::after{
+    transform: translateX(50%);
+}
+
+
+/* CADASTRO ACTIVE */
+
+.card.cadastroActive .facaCadastro{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card.cadastroActive .formLogin{
+    opacity: 0;
+    pointer-events: none;
+}
+
+.card.cadastroActive::after{
+    transform: translateX(-50%);
 }
