@@ -90,7 +90,7 @@ h2{
     margin-bottom: 22px;
 }
 
-.facaCadastro p, .facaLogin p{
+.facaCadastro p, .facaLogin p {
     color: rgba(0, 0, 0, 0.6);
     margin-bottom: 12px;
 }
@@ -175,6 +175,11 @@ p{
     pointer-events: none;
 }
 
+.card.loginActive .facaCadastro{
+    transform: translateX(0);
+    transition: all .3s .3s;
+}
+
 .card.loginActive .formCadastro{
     opacity: 0;
     pointer-events: none;
@@ -192,6 +197,11 @@ p{
     pointer-events: none;
 }
 
+.card.cadastroActive .facaLogin{
+    transform: translateX(0);
+    transition: all .3s .3s;
+}
+
 .card.cadastroActive .formLogin{
     opacity: 0;
     pointer-events: none;
@@ -199,4 +209,21 @@ p{
 
 .card.cadastroActive::after{
     transform: translateX(-50%);
+}
+
+
+/* TRANSITIONS */
+
+.card::after{
+    transition: all .5s;
+}
+
+.facaCadastro{
+    transform: translateX(200%);
+    transition: all .3s 0;
+}
+
+.facaLogin{
+    transform: translateX(-200%);
+    transition: all .3s 0;
 }
